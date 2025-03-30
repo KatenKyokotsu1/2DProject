@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isGrounded;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wood;
     [SerializeField] private float jumpForce;
 
     [Header("References")]
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        
         Movement();
         Jump();
 
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
         float yatay = Input.GetAxis("Horizontal") * speed;
         rb2D.velocity = new Vector2(yatay, rb2D.velocity.y);
 
-        if(yatay != 0 && isGrounded)
+        if(yatay != 0 && isGrounded )
         {
             anim.SetBool("isRunning",true);
         }
@@ -43,6 +45,13 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
 
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.5f, wood);
+
+        if (hit.collider!=null && Input.GetKey(KeyCode.S))
+        {
+            hit.collider.excludeLayers = LayerMask.GetMask("Player");
         }
 
         if (yatay > 0 && !isFacingRight)

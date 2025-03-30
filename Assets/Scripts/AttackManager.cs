@@ -25,6 +25,7 @@ public class AttackManager : MonoBehaviour
         {
             PerformAttack();
         }
+        
     }
 
     public void PerformAttack()
@@ -32,21 +33,24 @@ public class AttackManager : MonoBehaviour
         if (!canAttack) return;
         canAttack = false;
 
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("isAttack");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("Düþmana vuruldu: " + enemy.name);
-            //enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage);
-        }
+            enemy.GetComponent<EnemyManager>()?.TakeDamage(attackDamage);
 
+        }
         Invoke(nameof(ResetAttack), attackCooldown);
+        //animator.SetBool("isAttack", false);
+
     }
 
     private void ResetAttack()
-    {
+    {       
         canAttack = true;
+
     }
 
     private void OnDrawGizmosSelected()
