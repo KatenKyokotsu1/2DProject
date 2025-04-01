@@ -43,7 +43,6 @@ public class AttackManager : MonoBehaviour
 
         }
         Invoke(nameof(ResetAttack), attackCooldown);
-        //animator.SetBool("isAttack", false);
 
     }
 
