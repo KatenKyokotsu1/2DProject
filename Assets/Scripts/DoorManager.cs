@@ -81,10 +81,10 @@ public class DoorManager : MonoBehaviour
     IEnumerator SmoothMoveCamera(Vector3 targetPosition)
     {
         Vector3 startPos = Camera.main.transform.position;
-        targetPosition.z = startPos.z; // Kameranýn Z ekseni deðiþmemeli
+        targetPosition.z = startPos.z; 
 
         float elapsedTime = 0f;
-        float duration = 2f; // Kamera geçiþ süresi
+        float duration = 2f; 
 
         while (elapsedTime < duration)
         {

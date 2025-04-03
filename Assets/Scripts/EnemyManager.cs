@@ -9,7 +9,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Transform groundCheck,attackPoint;
     [SerializeField] private LayerMask groundLayer,playerLayer;
     [SerializeField] private float attackRange;
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
+    [SerializeField] private float currentSpeed;
     [SerializeField] private bool isFacingRight = true;
     [SerializeField] private GameObject Player;
 
@@ -22,6 +23,7 @@ public class EnemyManager : MonoBehaviour
         Player = GameObject.Find("Player");
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        currentSpeed = speed;
     }
 
     void Update()
@@ -41,18 +43,20 @@ public class EnemyManager : MonoBehaviour
     void Patrol()
     {
         bool isEmpty = Physics2D.Raycast(groundCheck.position,Vector2.down,0.2f,groundLayer);
-        bool isPlayer = Physics2D.Raycast(attackPoint.position, (isFacingRight?Vector2.right:Vector2.left), 1, playerLayer);
+        bool isWall= Physics2D.Raycast(groundCheck.position, (isFacingRight ? Vector2.right : Vector2.left), 0.2f, groundLayer);
+
+        bool isPlayer = Physics2D.Raycast(attackPoint.position, (isFacingRight?Vector2.right:Vector2.left), 5, playerLayer);
         bool isRange = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
 
         transform.Translate(Vector2.right * speed * Time.deltaTime * (isFacingRight ? 1 : -1));
         
-        if (!isEmpty)
+        if (!isEmpty || isWall)
         {
             Flip();
         }
         if (isPlayer)
         {
-            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed );
+            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed/10 );
 
         }
 
@@ -63,6 +67,7 @@ public class EnemyManager : MonoBehaviour
         else
         {
             anim.SetBool("isRange", false);
+            speed = currentSpeed;
 
         }
     }
