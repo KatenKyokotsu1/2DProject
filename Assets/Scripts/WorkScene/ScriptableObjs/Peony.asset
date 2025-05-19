@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31262aa5afd37eb4fbb31b1316ca52cd, type: 3}
+  m_Name: Peony
+  m_EditorClassIdentifier: 
+  name: Peony
+  icon: {fileID: 0}
+  nextLevelPlant: {fileID: 11400000, guid: e755e65baf057da43a83360fbb1620fc, type: 2}
+  nextPlantPrefab: {fileID: 6926242992895119230, guid: 37c56eb73cf70ca4baa21514b503873b, type: 3}
+  itemDescription: 
+  soulPoint: 30
+  level: 0

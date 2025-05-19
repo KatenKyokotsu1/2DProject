@@ -20,13 +20,14 @@ public class DoorManager : MonoBehaviour
        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (isChoosing)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                
                 selectedDoorIndex = selectedDoorIndex + 1 ;
                 MoveCameraToSelectedDoor();
             }
@@ -43,6 +44,10 @@ public class DoorManager : MonoBehaviour
         }
         
         if (selectedDoorIndex >= Doors.Count)
+        {
+            selectedDoorIndex = Doors.Count-1;
+        }
+        if (selectedDoorIndex <= 0)
         {
             selectedDoorIndex = 0;
         }
@@ -71,7 +76,7 @@ public class DoorManager : MonoBehaviour
     }
     private void MoveCameraToSelectedDoor()
     {
-        StopAllCoroutines(); // Eski kamera hareketlerini iptal et
+        StopAllCoroutines(); 
         StartCoroutine(SmoothMoveCamera(Doors[selectedDoorIndex].position));
 
         Animator anim = Doors[selectedDoorIndex].GetComponent<Animator>();
