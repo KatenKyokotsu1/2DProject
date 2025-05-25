@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowers: {fileID: 11400000, guid: 530f22cf1fcfaa74cb531b1c2c38018d, type: 2}
+  SoulParticle: {fileID: 6757724870288473640, guid: 362c3b3da1e06f641bc7d2a89bbde720, type: 3}
 --- !u!114 &7625994163231201875
 MonoBehaviour:
   m_ObjectHideFlags: 0

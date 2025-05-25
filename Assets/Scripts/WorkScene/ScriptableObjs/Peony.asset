@@ -16,6 +16,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   nextLevelPlant: {fileID: 11400000, guid: e755e65baf057da43a83360fbb1620fc, type: 2}
   nextPlantPrefab: {fileID: 6926242992895119230, guid: 37c56eb73cf70ca4baa21514b503873b, type: 3}
-  itemDescription: 
-  soulPoint: 30
+  soulPoint: 10
   level: 0
+  soulTimer: 10

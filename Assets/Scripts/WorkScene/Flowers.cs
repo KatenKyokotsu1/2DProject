@@ -9,7 +9,7 @@ public class Flowers : ScriptableObject
     public Image icon;
     public Flowers nextLevelPlant;
     public GameObject nextPlantPrefab;
-    public string itemDescription;
     public int soulPoint;
     public int level;
+    public int soulTimer;
 }
