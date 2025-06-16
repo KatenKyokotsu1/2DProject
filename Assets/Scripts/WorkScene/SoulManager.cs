@@ -19,7 +19,14 @@ public class SoulManager : MonoBehaviour
     }
     public void AddSoul(int flowerPoint)
     {
+        
         totalSoul += flowerPoint;
         pointText.text = "Soul = " + totalSoul.ToString();
+    }
+    public void RemoveSoul(int flowerPoint)
+    {
+        totalSoul -= flowerPoint;
+        pointText.text = "Soul = " + totalSoul.ToString();
+
     }
 }

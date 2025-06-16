@@ -6,18 +6,9 @@ public class CollectSc : MonoBehaviour
 {
     public SCitem scItem;
 
-    void Start()
+    public void SetSCItem(SCitem item)
     {
-        // Parent'a çýk
-        Transform parent = transform.parent;
-
-        // Parent altýndaki tüm SCitem'leri ara
-        scItem = parent.GetComponentInChildren<SCitem>();
-
-        if (scItem == null)
-        {
-            Debug.LogWarning("SCitem bulunamadý!");
-        }
+        scItem = item;
     }
 
     public void OnClickCollect()

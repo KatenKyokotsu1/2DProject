@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab69f0902001c924cb2ce2ff85bf9265, type: 3}
   m_Name: Sunflower
   m_EditorClassIdentifier: 
-  name: Sunflower
+  flowerName: 
   icon: {fileID: 0}
   nextLevelPlant: {fileID: 11400000, guid: 530f22cf1fcfaa74cb531b1c2c38018d, type: 2}
   nextPlantPrefab: {fileID: 8789847770270477188, guid: e65d93875eca61f49839c7e0aa0f7cfd, type: 3}
+  prefab: {fileID: 5962188361092284526, guid: 80fe42c2d28833a4d9cc1ac6181a7886, type: 3}
+  price: 100
   soulPoint: 50
-  level: 0
-  soulTimer: 20
+  level: 3
+  soulTimer: 1
+  soulSpeed: 3

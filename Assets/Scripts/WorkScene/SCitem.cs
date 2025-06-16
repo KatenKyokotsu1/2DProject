@@ -8,13 +8,11 @@ using UnityEngine.UI;
 
 public class SCitem : MonoBehaviour
 {
-    public Flowers flowers; // Bitki bilgileri (içinde soulPoint vs.)
+    public Flowers flowers; 
     public bool isInSlot = false;
-    public float delay = 3f; // Ne kadar sürede 1 soul üretileceði
     public int storedSoulAmount = 0;
-    public int maxSoulAmount = 10; // Maksimum birikecek soul sayýsý
+    public int soulSpeed;
     public Canvas canvas;
-
     private Coroutine soulCoroutine;
 
     public void StartSoulProduction()
@@ -25,28 +23,31 @@ public class SCitem : MonoBehaviour
             soulCoroutine = StartCoroutine(CreateSoulLoop());
         }
     }
+    
 
     IEnumerator CreateSoulLoop()
     {
         while (true)
         {
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(flowers.soulTimer);
 
-            if (storedSoulAmount < maxSoulAmount)
+            if (storedSoulAmount < flowers.soulPoint)
             {
-                storedSoulAmount += flowers.soulPoint;
-                storedSoulAmount = Mathf.Min(storedSoulAmount, maxSoulAmount);
+                storedSoulAmount += soulSpeed;
+
+                if (storedSoulAmount > flowers.soulPoint)
+                {
+                    storedSoulAmount = flowers.soulPoint;
+                }
             }
         }
     }
 
     public void CollectSouls()
     {
-        Debug.Log("0 dan küçük");
 
         if (storedSoulAmount > 0)
         {
-            Debug.Log("0 dan büyük");
             SoulManager soulManager = FindAnyObjectByType<SoulManager>();
             soulManager.AddSoul(storedSoulAmount);
             storedSoulAmount = 0;

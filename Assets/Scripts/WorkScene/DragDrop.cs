@@ -22,6 +22,8 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDrag
     {
         originalPosition = rectTransform.position;
         originalParent = transform.parent;
+        transform.SetParent(canvas.transform); // drag sırasında UI hiyerarşisinden çıkıp en üste gel
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -45,19 +47,19 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDrag
             {
                 rectTransform.position = result.gameObject.transform.position;
                 transform.SetParent(result.gameObject.transform);
+                transform.SetAsLastSibling();
 
                 SCitem item = GetComponent<SCitem>();
                 if (item != null)
                 {
                     item.StartSoulProduction();
-                    TryTripleMerge(item); // ✅ Buraya üçlü birleşme eklendi
+                    TryTripleMerge(item); 
                 }
                 return;
             }
         }
 
-        // Eğer uygun hedef yoksa geri dön
-        rectTransform.position = originalPosition;
+        //rectTransform.position = originalPosition;
         transform.SetParent(originalParent);
     }
 
@@ -82,7 +84,8 @@ public class DragDrop : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDrag
             Flowers next = sourcePlant.flowers.nextLevelPlant;
             GameObject plantPrefab = next.nextPlantPrefab;
 
-            GameObject upgraded = Instantiate(plantPrefab, parent.position, Quaternion.identity, canvas.transform);
+            GameObject upgraded = Instantiate(plantPrefab, parent.position, Quaternion.identity, parent);
+            upgraded.transform.SetAsLastSibling();
             SCitem item = upgraded.GetComponent<SCitem>();
             if (item != null) item.StartSoulProduction();
 

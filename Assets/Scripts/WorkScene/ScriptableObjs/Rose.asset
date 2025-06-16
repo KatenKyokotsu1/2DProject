@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66de446a8cb51f646868b5be740efa82, type: 3}
   m_Name: Rose
   m_EditorClassIdentifier: 
-  name: Rose
+  flowerName: 
   icon: {fileID: 0}
   nextLevelPlant: {fileID: 11400000, guid: bef7ac9dcab2d9940aa435ec12155a05, type: 2}
   nextPlantPrefab: {fileID: 5962188361092284526, guid: 80fe42c2d28833a4d9cc1ac6181a7886, type: 3}
+  prefab: {fileID: 6926242992895119230, guid: 37c56eb73cf70ca4baa21514b503873b, type: 3}
+  price: 60
   soulPoint: 30
-  level: 0
-  soulTimer: 15
+  level: 2
+  soulTimer: 1
+  soulSpeed: 2

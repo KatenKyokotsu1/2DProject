@@ -53,7 +53,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowers: {fileID: 11400000, guid: bef7ac9dcab2d9940aa435ec12155a05, type: 2}
-  SoulParticle: {fileID: 6757724870288473640, guid: 362c3b3da1e06f641bc7d2a89bbde720, type: 3}
+  isInSlot: 0
+  storedSoulAmount: 0
+  soulSpeed: 3
+  canvas: {fileID: 0}
+  soulEffect: {fileID: 0}
 --- !u!114 &2655844451595421357
 MonoBehaviour:
   m_ObjectHideFlags: 0
